@@ -1,32 +1,32 @@
 <template>
-    <nav>
+  <nav>
     <template v-if="!$props.isSecondary">
-        <img v-if="$props.isSecondary" alt="Vue logo" class="logo" src="@/assets/logo.svg" width="25" height="25" />
-        <span v-if="$props?.title">{{ $props.title }}</span>
-      </template>
-      <RouterLink v-for="(link, index) in $props.links" :key="index" :to="link.path">{{ link.title }}</RouterLink>
-    </nav>
+      <img v-if="$props.isSecondary" alt="Vue logo" class="logo" src="@/assets/logo.svg" width="25" height="25" />
+      <span v-if="$props?.title">{{ $props.title }}</span>
+    </template>
+    <RouterLink v-for="(link, index) in $props.links" :key="index" :to="link.path">{{ link.title }}</RouterLink>
+  </nav>
 </template>
 
 <script setup lang="ts">
-  import type { RouterLink } from '@/router/list-routes';
+import type { RouterLink } from '@/router/list-routes';
 
-  interface Props {
-    title?: string;
-    links: RouterLink[];
-    isSecondary?: boolean;
-  }
-  withDefaults(defineProps<Props>(), {
-    title: 'Vue App',
-    isSecondary: false,
-  })
+interface Props {
+  title?: string;
+  links: RouterLink[];
+  isSecondary?: boolean;
+}
+withDefaults(defineProps<Props>(), {
+  title: 'Vue App',
+  isSecondary: false,
+})
 </script>
 
 
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
+  /* max-height: 100vh; */
 }
 
 .logo {
@@ -35,7 +35,6 @@ header {
 }
 
 nav {
-  width: 100%;
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
@@ -60,29 +59,30 @@ nav a:first-of-type {
 }
 
 /* @media (min-width: 1024px) { */
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+header {
+  display: flex;
+  place-items: center;
+  padding-right: calc(var(--section-gap) / 2);
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.logo {
+  margin: 0 2rem 0 0;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+header .wrapper {
+  display: flex;
+  place-items: flex-start;
+  flex-wrap: wrap;
+}
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+nav {
+  text-align: left;
+  margin-left: -1rem;
+  font-size: 1rem;
 
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+  padding: 1rem 0;
+  margin-top: 1rem;
+}
+
 /* } */
 </style>
